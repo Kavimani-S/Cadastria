@@ -1,0 +1,82 @@
+<!-- Library/templates/Library/book_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - Confirm Delete</title>
+    <style>
+        /* Center content vertically and horizontally */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for confirm deletion container */
+        .confirm-deletion {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button[type="submit"], a {
+            margin: 0 10px; /* Add spacing between the buttons */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline for links */
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"] {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #bd2130;
+        }
+
+        a {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirm-deletion">
+        <h1>Confirm Deletion</h1>
+        <p>Are you sure you want to delete "{{ book.title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm</button>
+            <a href="{% url 'book_detail' book.pk %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
